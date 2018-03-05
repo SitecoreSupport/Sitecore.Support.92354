@@ -117,8 +117,13 @@ namespace Sitecore.Support.Text.Diff.View
     protected string Compare(string value1, string value2)
     {
       DiffEngine diffEngine = new DiffEngine();
+
+      #region Modified code
+      // Remove "StringUtil.RemoveTags()" and encode the html to output XML content in the coloumn view. 
       value1 = System.Net.WebUtility.HtmlEncode(value1);
       value2 = System.Net.WebUtility.HtmlEncode(value2);
+      #endregion
+
       DiffListHtml source = new DiffListHtml(value1);
       DiffListHtml destination = new DiffListHtml(value2);
       diffEngine.ProcessDiff(source, destination, DiffEngineLevel.SlowPerfect);

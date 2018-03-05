@@ -165,11 +165,18 @@ namespace Sitecore.Support.shell.Applications.Dialogs.Diff
       DiffView diffView;
       if (@string == "OneColumn")
       {
+
+        #region Modified code       
+        // Pointing to the modified OneColumnDiffView
         diffView = new Sitecore.Support.Text.Diff.View.OneColumnDiffView();
+        #endregion
       }
       else
       {
+        #region Modified code 
+        // Pointing to the modified TwoCoumnsDiffView
         diffView = new Sitecore.Support.Text.Diff.View.TwoCoumnsDiffView();
+        #endregion
       }
       diffView.Compare(this.Grid, item, item2, string.Empty);
     }
