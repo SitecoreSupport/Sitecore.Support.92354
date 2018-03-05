@@ -15,7 +15,7 @@ using Sitecore.Resources;
 
 namespace Sitecore.Support.Text.Diff.View
 {
-  public class OneColumnDiffView : Sitecore.Text.Diff.View.DiffView
+  public class OneColumnDiffView : global::Sitecore.Text.Diff.View.OneColumnDiffView
   {
 
     public override int Compare(System.Web.UI.Control parent, Item item1, Item item2, string click)
@@ -117,8 +117,8 @@ namespace Sitecore.Support.Text.Diff.View
     protected string Compare(string value1, string value2)
     {
       DiffEngine diffEngine = new DiffEngine();
-      value1 = StringUtil.RemoveTags(value1);
-      value2 = StringUtil.RemoveTags(value2);
+      value1 = System.Net.WebUtility.HtmlEncode(value1);
+      value2 = System.Net.WebUtility.HtmlEncode(value2);
       DiffListHtml source = new DiffListHtml(value1);
       DiffListHtml destination = new DiffListHtml(value2);
       diffEngine.ProcessDiff(source, destination, DiffEngineLevel.SlowPerfect);
